@@ -9,4 +9,5 @@ Provide project context and coding guidelines that AI should follow when generat
 - Use meaningful variable and function names to improve code readability.
 - Keep security considerations in mind, especially when handling user input or sensitive data.
 - Avoid code duplication by reusing functions and modules where appropriate.
-- Generate commit messages that accurately describe the changes made.
+- Adhere to the coding style and conventions used in the existing codebase.
+- Inline suggestions and apply them directly to the existing codebase.
