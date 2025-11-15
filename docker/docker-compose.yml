@@ -1,4 +1,24 @@
 services:
+  classquiz:
+    image: ghcr.io/ostert/classquiz:latest
+    container_name: classquiz
+    ports:
+      - "3000:80"
+    environment:
+      # Pas aan naar wens:
+      # Kies database (SQLite standaard); voor Pi is SQLite het simpelst.
+      DATABASE_CLIENT: sqlite
+      DATABASE_SQLITE_FILENAME: /app/data/classquiz.sqlite
+
+      # Host/poort (voor reverse proxy later kun je BASE_URL zetten)
+      PORT: 80
+
+      # Optioneel: JWT_SECRET voor sessies (veilig, willekeurige string)
+      JWT_SECRET: change_me_to_a_long_random_string
+
+      # Optioneel: Node env
+      NODE_ENV: production
+
   mysql:
     image: mysql:8.0
     container_name: mysql_db
@@ -39,7 +59,7 @@ services:
     depends_on:
       - mysql
     ports:
-      - "8888:80"
+      - "8888:8888"
     environment:
       DB_HOST: mysql
       DB_USER: admin
